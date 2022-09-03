@@ -36,12 +36,12 @@ const getMessageRecipient = async (id: string) => {
 };
 
 const getMessageMetaData = async (message: Message) => {
-  const messageStatus = getMessageStatus(message.id);
-  const messageRecipient = getMessageRecipient(message.recipientId);
+  const status = getMessageStatus(message.id);
+  const recipient = getMessageRecipient(message.recipientId);
 
   return {
-    recipient: "foo",
-    status: "bar",
+    recipient,
+    status,
   };
 };
 
@@ -51,7 +51,7 @@ const getMessageMetaData = async (message: Message) => {
 export const getMessage = async (messageId: string) => {
   const message = await getMessageRecord(messageId);
 
-  const meta = await getMessageMetaData(record);
+  const meta = await getMessageMetaData(message);
 
   return {
     message,

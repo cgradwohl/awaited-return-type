@@ -27,8 +27,11 @@ const getMessageMetaData = async (message: Record<string, string> | false) => {
   };
 };
 
-export const formatMessage = async (id: string) => {
-  const message = await getMessage(id);
+/**
+ * given a messageId, return the message, messageStatus and messageRecipient
+ */
+export const formatMessage = async (messageId: string) => {
+  const message = await getMessage(messageId);
 
   const metaData = getMessageMetaData(message);
 

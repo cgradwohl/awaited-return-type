@@ -17,26 +17,40 @@ const getMessageRecord = async (id: string) => {
   }
 };
 
-const getMessageMetaData = async (message: Record<string, string> | false) => {
-  // const messageStatus = getMessageStatus(message.id);
-  // const messageRecipient = getMessageRecipient(message.recipientId)
+const getMessageStatus = async (id: string) => {
+  return {
+    status: "foo",
+  };
+};
+
+const getMessageRecipient = async (id: string) => {
+  return {
+    userId: "foo",
+    email: "bar",
+  };
+};
+
+const getMessageMetaData = async (message) => {
+  const messageStatus = getMessageStatus(message.id);
+  const messageRecipient = getMessageRecipient(message.recipientId);
 
   return {
-    user: "foo",
+    recipient: "foo",
     status: "bar",
   };
 };
 
 /**
- * given a messageId, return an object with message, messageStatus and messageRecipient
+ * given a messageId, return an object with the message, the messageRecipient and the messageStatus
  */
 export const getMessage = async (messageId: string) => {
   const message = await getMessageRecord(messageId);
 
-  const metaData = getMessageMetaData(message);
+  const meta = await getMessageMetaData(record);
 
   return {
-    ...message,
-    meta: metaData,
+    message,
+    messageRecipient: meta.recipient,
+    messageStatus: meta.status,
   };
 };

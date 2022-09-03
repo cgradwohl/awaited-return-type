@@ -1,4 +1,4 @@
-const getMessage = async (id: string) => {
+const getMessageRecord = async (id: string) => {
   switch (id) {
     case "message-1":
       return {
@@ -28,10 +28,10 @@ const getMessageMetaData = async (message: Record<string, string> | false) => {
 };
 
 /**
- * given a messageId, return the message, messageStatus and messageRecipient
+ * given a messageId, return and object with message, messageStatus and messageRecipient
  */
-export const formatMessage = async (messageId: string) => {
-  const message = await getMessage(messageId);
+export const getMessage = async (messageId: string) => {
+  const message = await getMessageRecord(messageId);
 
   const metaData = getMessageMetaData(message);
 

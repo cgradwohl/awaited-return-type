@@ -28,7 +28,7 @@ const getMessageMetaData = async (message: Record<string, string> | false) => {
 };
 
 /**
- * given a messageId, return and object with message, messageStatus and messageRecipient
+ * given a messageId, return an object with message, messageStatus and messageRecipient
  */
 export const getMessage = async (messageId: string) => {
   const message = await getMessageRecord(messageId);

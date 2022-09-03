@@ -1,15 +1,20 @@
+type Message = {
+  id: string;
+  recipientId: string;
+};
+
 const getMessageRecord = async (id: string) => {
   switch (id) {
     case "message-1":
       return {
         id: "abc-1",
-        recipient: "xyz-1",
+        recipientId: "xyz-1",
       };
 
     case "message-2":
       return {
         id: "abd-2",
-        recipient: "xyz-2",
+        recipientId: "xyz-2",
       };
 
     default:
@@ -30,7 +35,7 @@ const getMessageRecipient = async (id: string) => {
   };
 };
 
-const getMessageMetaData = async (message) => {
+const getMessageMetaData = async (message: Message) => {
   const messageStatus = getMessageStatus(message.id);
   const messageRecipient = getMessageRecipient(message.recipientId);
 
